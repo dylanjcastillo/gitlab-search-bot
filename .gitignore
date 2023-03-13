@@ -1,6 +1,4 @@
 __pycache__
 .DS_Store
-data/handbook/
-data/handbook_processed/
-data/handbook_merged/
+gitlab_search_bot/data/handbook*
 .env
