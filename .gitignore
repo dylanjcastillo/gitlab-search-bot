@@ -1,2 +1,6 @@
 __pycache__
 .DS_Store
+data/handbook/
+data/handbook_processed/
+data/handbook_merged/
+.env
