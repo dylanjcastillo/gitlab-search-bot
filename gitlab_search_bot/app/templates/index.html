@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gitlab Handbook AI Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}" />
+</head>
+
+<body class="font-sans antialiased flex flex-col bg-stone-50 min-h-screen px-2">
+    <div class="sm:w-[574px] w-full mx-auto mb-5 flex flex-col items-center">
+        <img src="{{ url_for('static', path='/fox_image.png')}}" alt="Image of Fox" width="200" height="200"
+            class="mx-auto mt-10">
+        <h1 class="mx-auto text-3xl font-bold text-center mt-2 mb-5">GitLab Handbook AI Assistant</h1>
+        <form hx-post="/ask" hx-indicator="#indicator" hx-ext="disable-element" hx-disable-element="#submit-btn"
+            hx-target="#results-list" class="w-full" _="
+    on keydown[(ctrlKey or metaKey) and key == 'Enter'] from window requestSubmit() me 
+    on keydown[(ctrlKey or metaKey) and key == 'Enter'] from window set #results-list.innerHTML to ''">
+            <textarea id="question" name="question" required autofocus placeholder="What would you like to know?" class="
+            border w-full mx-auto p-2.5 text-gray-900 bg-stone-50 rounded-lg border-stone-300 focus:ring-blue-500
+            focus:border-blue-500"></textarea>
+            <div class="mt-4 flex flex-row flex-wrap justify-center">
+                <button type="button" class="
+                    text-stone-900 hover:text-white border border-stone-800 hover:bg-stone-900 
+                    active:bg-stone-700 active:text-white
+                    focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-5 py-2.5 
+                    text-center mr-2 mb-2 " _="
+                    set :ideas to
+                    [
+                    'How many vacation days are given in Germany?',
+                    'How many vacation days are given in the Netherlands?',
+                    'What should I do to resign?',
+                    'What is the product development process?',
+                    'How do I get a new laptop?',
+                    'Who do I talk to if I have questions about the product development process?'
+                    ]
+                    on click
+                    set #question.value to :ideas[Math.floor(Math.random() * :ideas.length)]
+                    add .animate-textarea to #question wait 1s then remove .animate-textarea from #question
+                    ">
+                    I don't know what to ask
+                </button>
+                <button id="submit-btn" type="submit" class="to-disable
+                text-white
+                bg-orange-500
+                hover:bg-orange-700 
+                focus:ring-4 focus:outline-none focus:ring-amber-200
+                disabled:focus:ring-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 
+                disabled:bg-gray-600" _="on click set #results-list.innerHTML to ''">Ask
+                </button>
+            </div>
+        </form>
+        <div id="results" class="w-full my-4 flex flex-col items-center">
+            <div id="results-list"></div>
+            <div id="indicator" class="htmx-indicator my-indicator text-center mx-auto animate-indicator">Looking for
+                relevant sources...</div>
+        </div>
+    </div>
+    <script src=" https://unpkg.com/htmx.org@1.8.6"
+        integrity="sha384-Bj8qm/6B+71E6FQSySofJOUjA/gq330vEqjFx9LakWybUySyI1IQHwPtbTU7bNwx" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/disable-element.js">
+    </script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.8">
+    </script>
+    ***REMOVED***
+</body>
+
+</html>

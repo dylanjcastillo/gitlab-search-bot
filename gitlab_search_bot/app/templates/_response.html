@@ -1,0 +1,26 @@
+<p class="mt-4">
+    {% for g in generated_text%}
+    <p class="leading-normal mt-0 mb-1">{{g}}</p>
+    {% endfor %}
+</p>
+
+<div>
+    <h3 class="mt-4">
+        Relevant sources:
+    </h3>
+    {% for k, v in references.items() %}
+    <details>
+        <summary class="font-bold">{{ k }}</summary>
+        <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside">
+            {% for v_ in v %}
+            {%  if v_["section"]  %}
+            <li>
+                <a href="https://about.gitlab.com{{ v_["full_path"] }}"
+                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ v_["section"] }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </details>
+    {% endfor %}
+</div>

@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.my-indicator {
+    display: none;
+}
+
+.htmx-request .my-indicator {
+    display: inline;
+}
+
+.htmx-request.my-indicator {
+    display: inline;
+}
+
+.animate-indicator {
+    animation-name: disappear;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes disappear {
+    0% {
+        color: #fff;
+    }
+
+    50% {
+        color: #000;
+    }
+
+    100% {
+        color: #fff;
+    }
+}
+
+.animate-textarea {
+    animation-name: highlight;
+    animation-duration: 1s;
+}
+
+@keyframes highlight {
+    0% {
+        color: #cc3915;
+    }
+
+    100% {
+        color: black;
+    }
+}

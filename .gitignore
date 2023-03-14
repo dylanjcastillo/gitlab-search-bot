@@ -2,3 +2,4 @@ __pycache__
 .DS_Store
 gitlab_search_bot/data/handbook*
 .env
+node_modules/
