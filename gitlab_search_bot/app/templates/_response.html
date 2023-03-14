@@ -5,12 +5,12 @@
 </p>
 
 <div>
-    <h3 class="mt-4">
+    <h3 class="mt-4 font-bold text-lg">
         Relevant sources:
     </h3>
     {% for k, v in references.items() %}
     <details>
-        <summary class="font-bold">{{ k }}</summary>
+        <summary class="font-medium">{{ k }}</summary>
         <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside">
             {% for v_ in v %}
             {%  if v_["section"]  %}

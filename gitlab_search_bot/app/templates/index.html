@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}" />
 </head>
 
-<body class="font-sans antialiased flex flex-col bg-stone-50 min-h-screen px-2">
+<body class="font-sans antialiased flex flex-col bg-stone-50 min-h-screen px-4">
     <div class="sm:w-[574px] w-full mx-auto mb-5 flex flex-col items-center">
         <img src="{{ url_for('static', path='/fox_image.png')}}" alt="Image of Fox" width="200" height="200"
             class="mx-auto mt-10">
@@ -35,7 +35,8 @@
                     'What should I do to resign?',
                     'What is the product development process?',
                     'How do I get a new laptop?',
-                    'Who do I talk to if I have questions about the product development process?'
+                    'What are the guidelines for purchasing a new laptop?',
+                    'Can I purchase a laptop that is more expensive than the standard laptop?'
                     ]
                     on click
                     set #question.value to :ideas[Math.floor(Math.random() * :ideas.length)]

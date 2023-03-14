@@ -106,7 +106,7 @@ def get_response(prompt: str, cohere_client: cohere.Client):
         model="command-xlarge-nightly",
         prompt=prompt,
         max_tokens=200,
-        temperature=0.7,
+        temperature=0.1,
     )
     return response.generations[0].text
 
