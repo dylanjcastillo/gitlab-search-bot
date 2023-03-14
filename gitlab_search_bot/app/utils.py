@@ -58,7 +58,9 @@ def rerank_docs(
     payloads = [
         {
             "text": clean_text(hit.payload["text"]),
-            "title": clean_text(hit.payload["title"].replace('"', "").replace("'", "")),
+            "title": clean_text(hit.payload["title"].replace('"', "").replace("'", ""))
+            if hit.payload["title"]
+            else "",
             "path": clean_text(hit.payload["path"]),
             "full_path": get_full_path(hit.payload["section"], hit.payload["path"]),
             "section": hit.payload["section"].split(">")[-1],

@@ -60,10 +60,8 @@ def ask(
     )
     reranked_results = rerank_docs(hits=hits, query=question_cl, model=reranking_model)
     prompt = build_prompt(question_cl, reranked_results)
-    print(prompt)
 
     response = get_response(prompt, cohere_client=cohere_client)
-    response = response.strip().split("\n")
 
     references = defaultdict(list)
     for result in reranked_results:
@@ -73,7 +71,7 @@ def ask(
         "_response.html",
         {
             "request": request,
-            "generated_text": response,
+            "generated_text": response.strip().split("\n"),
             "references": references,
         },
     )
