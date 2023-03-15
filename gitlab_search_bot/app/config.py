@@ -1,1 +1,1 @@
-/Users/dcast/Documents/GitHub/gitlab-search-bot/gitlab_search_bot/config.py
+../config.py
