@@ -27,6 +27,7 @@ if confirm_action "Do you want to create/update the supervisor config?"
 then
     echo "Creating supervisor config"
     sudo cp $APP_NAME-supervisor.conf /etc/supervisor/conf.d/
+    sudo sed -i "s|APP_NAME|${APP_NAME}|g" /etc/supervisor/conf.d/$APP_NAME-supervisor.conf 
     sudo sed -i "s|PROJECT_DIR|${PROJECT_DIR}|g" /etc/supervisor/conf.d/$APP_NAME-supervisor.conf 
 fi
 
