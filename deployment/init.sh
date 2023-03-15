@@ -1,21 +1,7 @@
 #!/bin/bash
 set -e
 
-APP_NAME=gitlab-search-bot
-REPOSITORY_NAME=dylanjcastillo/gitlab-search-bot.git
-PYTHON_VERSION=3.10
-
-function confirm_action {
-    read -p "$1 [y/n] (y)" -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]
-    then
-        return 0
-    else
-        return 1
-    fi
-}
-
+source utils.sh
 
 if confirm_action "Do you want to download and install updates?"
 then
@@ -89,7 +75,7 @@ fi
 if confirm_action "Do you want to initialize the virtual environment?"
 then
     echo "Initializing virtual environment"
-    cd $PROJECT_DIR/$PROJECT_SUBDIR
+    cd $PROJECT_DIR 
     /home/ubuntu/.local/bin/poetry shell 
     pip3 install torch --extra-index-url https://download.pytorch.org/whl/cpu
     /home/ubuntu/.local/bin/poetry install
