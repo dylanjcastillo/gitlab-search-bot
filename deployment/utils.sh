@@ -2,7 +2,7 @@ APP_NAME=gitlab-search-bot
 PROJECT_DIR=/home/ubuntu/gitlab-search-bot
 PROJECT_SUBDIR=gitlab_search_bot
 REPOSITORY_NAME=dylanjcastillo/gitlab-search-bot.git
-SERVER_NAME=gitlab.dylanjcastillo.com
+SERVER_NAME=gitlab.dylancastillo.co
 PYTHON_VERSION=3.10
 
 function confirm_action {
