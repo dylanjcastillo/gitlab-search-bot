@@ -1,0 +1,27 @@
+#!/bin/bash
+
+NAME=gitlab-search-bot
+DIR=/home/ubuntu/gitlab-search-bot
+APP_DIR=$DIR/gitlab_search_bot/app
+USER=ubuntu
+GROUP=ubuntu
+WORKERS=2
+VENV=$DIR/.venv/bin/activate
+BIND=unix:$DIR/run/gunicorn.sock
+LOG_LEVEL=warning
+MAX_REQUESTS=10
+MAX_REQUESTS_JITTER=5
+
+cd $APP_DIR
+source $VENV
+
+exec gunicorn app:app \
+  --name $NAME \
+  --workers $WORKERS \
+  --user=$USER \
+  --group=$GROUP \
+  --bind=$BIND \
+  --log-level=$LOG_LEVEL \
+  --log-file=- \
+  --max-requests $MAX_REQUESTS \
+  --max-requests-jitter $MAX_REQUESTS_JITTER
