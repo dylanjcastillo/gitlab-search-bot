@@ -36,6 +36,7 @@ then
     echo "Creating nginx config"
     sudo cp $APP_NAME-nginx.conf /etc/nginx/sites-available/$APP_NAME
     sudo sed -i "s|PROJECT_DIR|${PROJECT_DIR}|g" /etc/nginx/sites-available/$APP_NAME
+    sudo sed -i "s|SERVER_NAME|${SERVER_NAME}|g" /etc/nginx/sites-available/$APP_NAME
 fi
 
 if confirm_action "Do you want to create/update the aliases?"
