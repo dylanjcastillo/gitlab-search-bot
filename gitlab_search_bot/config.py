@@ -16,7 +16,7 @@ class Paths:
 
 @dataclass
 class ModelsConfig:
-    reranking_model_name: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    reranking_model_name: str = "cross-encoder/ms-marco-TinyBERT-L-2-v2"
 
 
 @dataclass
