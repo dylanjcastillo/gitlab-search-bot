@@ -89,7 +89,7 @@ fi
 if confirm_action "Do you want to initialize the virtual environment?"
 then
     echo "Initializing virtual environment"
-    cd $PROJECT_DIR
+    cd $PROJECT_DIR/$PROJECT_SUBDIR
     /home/ubuntu/.local/bin/poetry shell 
     pip3 install torch --extra-index-url https://download.pytorch.org/whl/cpu
     /home/ubuntu/.local/bin/poetry install
