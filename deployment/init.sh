@@ -71,3 +71,9 @@ then
     /home/ubuntu/.local/bin/poetry config virtualenvs.in-project true
     echo "Remember to source ~/.bashrc for changes to take effect"
 fi
+
+if confirm_action "Do you want to initialize and install the required packages in the virtual environment?"
+then
+    echo "Initializing virtual environment"
+    /home/ubuntu/.local/bin/poetry install
+fi
