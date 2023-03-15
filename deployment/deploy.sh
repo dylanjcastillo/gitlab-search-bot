@@ -32,7 +32,6 @@ fi
 
 if confirm_action "Do you want to create/update the nginx config?"
 then
-    echo
     echo "Creating nginx config"
     sudo cp $APP_NAME-nginx.conf /etc/nginx/sites-available/$APP_NAME
     sudo sed -i "s|PROJECT_DIR|${PROJECT_DIR}|g" /etc/nginx/sites-available/$APP_NAME
