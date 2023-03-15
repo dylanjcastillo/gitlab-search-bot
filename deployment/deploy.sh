@@ -18,16 +18,16 @@ then
     mkdir -p $PROJECT_DIR/bin;
     cp gunicorn_start $PROJECT_DIR/bin/gunicorn_start
     chmod u+x $PROJECT_DIR/bin/gunicorn_start
-    sed -i "s|APP_NAME|${APP_NAME}|g" $PROJECT_DIR/bin/gunicorn_start 
-    sed -i "s|PROJECT_DIR|${PROJECT_DIR}|g" $PROJECT_DIR/bin/gunicorn_start 
-    sed -i "s|PROJECT_SUBDIR|${PROJECT_SUBDIR}|g" $PROJECT_DIR/bin/gunicorn_start 
+    sudo sed -i "s|APP_NAME|${APP_NAME}|g" $PROJECT_DIR/bin/gunicorn_start 
+    sudo sed -i "s|PROJECT_DIR|${PROJECT_DIR}|g" $PROJECT_DIR/bin/gunicorn_start 
+    sudo sed -i "s|PROJECT_SUBDIR|${PROJECT_SUBDIR}|g" $PROJECT_DIR/bin/gunicorn_start 
 fi
 
 if confirm_action "Do you want to create/update the supervisor config?"
 then
     echo "Creating supervisor config"
     sudo cp $APP_NAME-supervisor.conf /etc/supervisor/conf.d/
-    sed -i "s|APP_NAME|${APP_NAME}|g" /etc/supervisor/conf.d/$APP_NAME-supervisor.conf 
+    sudo sed -i "s|APP_NAME|${APP_NAME}|g" /etc/supervisor/conf.d/$APP_NAME-supervisor.conf 
 fi
 
 if confirm_action "Do you want to create/update the nginx config?"
@@ -35,7 +35,7 @@ then
     echo
     echo "Creating nginx config"
     sudo cp $APP_NAME-nginx.conf /etc/nginx/sites-available/$APP_NAME
-    sed -i "s|PROJECT_DIR|${PROJECT_DIR}|g" /etc/nginx/sites-available/$APP_NAME
+    sudo sed -i "s|PROJECT_DIR|${PROJECT_DIR}|g" /etc/nginx/sites-available/$APP_NAME
 fi
 
 if confirm_action "Do you want to create/update the aliases?"
