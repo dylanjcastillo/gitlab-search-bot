@@ -36,11 +36,13 @@ then
     ssh-keygen -t ed25519 -C "dylanjcastillo@gmail.com"
     touch ~/.ssh/config 
     chmod 600 ~/.ssh/config 
-    echo "Host github-$APP_NAME 
-	HostName github.com 
+    cat >> ~/.ssh/config <<EOF
+Host github-$APP_NAME 
+    HostName github.com 
     AddKeysToAgent yes 
     PreferredAuthentications publickey 
-    IdentityFile ~/.ssh/id_ed25519" >> ~/.ssh/config
+    IdentityFile ~/.ssh/id_ed25519
+EOF
     echo "Copy the following key to your repository's deploy keys:"
     cat ~/.ssh/id_ed25519.pub
 fi

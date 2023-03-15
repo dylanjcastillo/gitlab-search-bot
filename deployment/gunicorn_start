@@ -1,8 +1,8 @@
 #!/bin/bash
 
-NAME=gitlab-search-bot
-DIR=/home/ubuntu/gitlab-search-bot
-APP_DIR=$DIR/gitlab_search_bot/app
+NAME=APP_NAME
+DIR=PROJECT_DIR
+APP_DIR=$DIR/PROJECT_SUBDIR/app
 USER=ubuntu
 GROUP=ubuntu
 WORKERS=2
