@@ -71,12 +71,3 @@ then
     /home/ubuntu/.local/bin/poetry config virtualenvs.in-project true
     echo "Remember to source ~/.bashrc for changes to take effect"
 fi
-
-if confirm_action "Do you want to initialize the virtual environment?"
-then
-    echo "Initializing virtual environment"
-    cd $PROJECT_DIR 
-    /home/ubuntu/.local/bin/poetry shell 
-    pip3 install torch --extra-index-url https://download.pytorch.org/whl/cpu
-    /home/ubuntu/.local/bin/poetry install
-fi
