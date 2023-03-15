@@ -27,4 +27,3 @@ exec gunicorn main:app \
   --log-file=- \
   --max-requests $MAX_REQUESTS \
   --max-requests-jitter $MAX_REQUESTS_JITTER \
-  --preload
