@@ -8,6 +8,7 @@ GROUP=ubuntu
 WORKERS=2
 VENV=$DIR/.venv/bin/activate
 BIND=unix:$DIR/run/gunicorn.sock
+WORKER_CLASS=uvicorn.workers.UvicornWorker
 LOG_LEVEL=warning
 MAX_REQUESTS=10
 MAX_REQUESTS_JITTER=5
@@ -15,13 +16,15 @@ MAX_REQUESTS_JITTER=5
 cd $APP_DIR
 source $VENV
 
-exec gunicorn app:app \
+exec gunicorn main:app \
   --name $NAME \
   --workers $WORKERS \
+  --worker-class $WORKER_CLASS \
   --user=$USER \
   --group=$GROUP \
   --bind=$BIND \
   --log-level=$LOG_LEVEL \
   --log-file=- \
   --max-requests $MAX_REQUESTS \
-  --max-requests-jitter $MAX_REQUESTS_JITTER
+  --max-requests-jitter $MAX_REQUESTS_JITTER \
+  --preload
