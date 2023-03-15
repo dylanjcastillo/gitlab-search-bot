@@ -1,23 +1,18 @@
 #!/bin/bash
 set -e
 
-APP_NAME=gitlab-search-bot
-PROJECT_DIR=/home/ubuntu/gitlab-search-bot
+source utils.sh
 
-read -p "Do you want to create the logs and run directories? [y/n] (y)" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]
+if confirm_action "Do you want to create the logs and run directories?"
 then
-    echo
     echo "Creating logs directory"
     mkdir -p $PROJECT_DIR/logs;
 
     echo "Creating run directory"
     mkdir -p $PROJECT_DIR/run;
 fi
-echo
 
-read -p "Do you want to create/update the gunicorn binary? [y/n] (y)" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]
+if confirm_action "Do you want to create/update the gunicorn binary?"
 then
     echo
     echo "Creating gunicorn binary"
@@ -25,28 +20,22 @@ then
     cp gunicorn_start $PROJECT_DIR/bin/gunicorn_start
     chmod u+x $PROJECT_DIR/bin/gunicorn_start
 fi
-echo
 
-read -p "Do you want to create/update the supervisor config? [y/n] (y)" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]
+if confirm_action "Do you want to create/update the supervisor config?"
 then
     echo
     echo "Creating supervisor config"
     sudo cp $APP_NAME-supervisor.conf /etc/supervisor/conf.d/
 fi
-echo
 
-read -p "Do you want to create/update the nginx config? [y/n] (y)" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]
+if confirm_action "Do you want to create/update the nginx config?"
 then
     echo
     echo "Creating nginx config"
     sudo cp $APP_NAME-nginx.conf /etc/nginx/sites-available/$APP_NAME
 fi
-echo
 
-read -p "Do you want to create/update the aliases? [y/n] (y)" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]
+if confirm_action "Do you want to create/update the aliases?"
 then
     echo
     echo "Removing old aliases"
@@ -75,11 +64,9 @@ then
     echo "alias restart-nginx='sudo systemctl restart nginx'" >> ~/.bashrc
     echo "alias status-app='sudo supervisorctl status "$APP_NAME"'" >> ~/.bashrc
 fi 
-echo
 
 # if users says yes, create a symlink to the nginx config
-read -p "Do you want to create a symlink to the nginx config in sites-enabled? [y/n] (y)" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]
+if confirm_action "Do you want to create a symlink to the nginx config in sites-enabled?"
 then
     echo
     # don't create a symlink if it already exists
@@ -92,4 +79,3 @@ then
         sudo ln -s /etc/nginx/sites-available/$APP_NAME/ etc/nginx/sites-enabled  
     fi 
 fi
-echo
