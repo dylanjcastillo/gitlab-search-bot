@@ -5,12 +5,12 @@ DIR=PROJECT_DIR
 APP_DIR=$DIR/PROJECT_SUBDIR/app
 USER=ubuntu
 GROUP=ubuntu
-WORKERS=2
+WORKERS=1
 VENV=$DIR/.venv/bin/activate
 BIND=unix:$DIR/run/gunicorn.sock
 WORKER_CLASS=uvicorn.workers.UvicornWorker
 LOG_LEVEL=warning
-MAX_REQUESTS=10
+MAX_REQUESTS=20
 MAX_REQUESTS_JITTER=5
 
 cd $APP_DIR
