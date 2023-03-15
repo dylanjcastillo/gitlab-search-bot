@@ -77,6 +77,6 @@ then
         exit 0
     else
         echo "Creating symlink"
-        sudo ln -s /etc/nginx/sites-available/$APP_NAME/ etc/nginx/sites-enabled  
+        sudo ln -s /etc/nginx/sites-available/$APP_NAME /etc/nginx/sites-enabled  
     fi 
 fi
