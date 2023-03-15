@@ -14,7 +14,6 @@ fi
 
 if confirm_action "Do you want to create/update the gunicorn binary?"
 then
-    echo
     echo "Creating gunicorn binary"
     mkdir -p $PROJECT_DIR/bin;
     cp gunicorn_start $PROJECT_DIR/bin/gunicorn_start
@@ -23,7 +22,6 @@ fi
 
 if confirm_action "Do you want to create/update the supervisor config?"
 then
-    echo
     echo "Creating supervisor config"
     sudo cp $APP_NAME-supervisor.conf /etc/supervisor/conf.d/
 fi
@@ -37,7 +35,6 @@ fi
 
 if confirm_action "Do you want to create/update the aliases?"
 then
-    echo
     echo "Removing old aliases"
     # Remove existing aliases
     sed -i '/alias gunicorn-logs/d' ~/.bashrc
@@ -68,7 +65,6 @@ fi
 # if users says yes, create a symlink to the nginx config
 if confirm_action "Do you want to create a symlink to the nginx config in sites-enabled?"
 then
-    echo
     # don't create a symlink if it already exists
     if [ -L /etc/nginx/sites-enabled/$APP_NAME ]
     then
