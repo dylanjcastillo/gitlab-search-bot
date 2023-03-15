@@ -5,13 +5,14 @@ DIR=PROJECT_DIR
 APP_DIR=$DIR/PROJECT_SUBDIR/app
 USER=ubuntu
 GROUP=ubuntu
-WORKERS=1
+WORKERS=2
 VENV=$DIR/.venv/bin/activate
 BIND=unix:$DIR/run/gunicorn.sock
 WORKER_CLASS=uvicorn.workers.UvicornWorker
 LOG_LEVEL=warning
 MAX_REQUESTS=20
 MAX_REQUESTS_JITTER=5
+TIMEOUT=120
 
 cd $APP_DIR
 source $VENV
@@ -27,3 +28,4 @@ exec gunicorn main:app \
   --log-file=- \
   --max-requests $MAX_REQUESTS \
   --max-requests-jitter $MAX_REQUESTS_JITTER \
+  --timeout $TIMEOUT 
