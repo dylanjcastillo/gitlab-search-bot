@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gitlab Handbook AI Assistant</title>
+    <title>mindmate - Gitlab Handbook</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}" />
 </head>
@@ -14,7 +14,7 @@
     <div class="sm:w-[574px] w-full mx-auto mb-5 flex flex-col items-center">
         <img src="{{ url_for('static', path='/fox_image.png')}}" alt="Image of Fox" width="200" height="200"
             class="mx-auto mt-10">
-        <h1 class="mx-auto text-3xl font-bold text-center mt-2 mb-5">GitLab Handbook AI Assistant</h1>
+        <h1 class="mx-auto text-3xl font-bold text-center mt-2 mb-5">mindmate - GitLab Handbook</h1>
         <form hx-post="/ask" hx-indicator="#indicator" hx-ext="disable-element" hx-disable-element="#submit-btn"
             hx-target="#results-list" class="w-full" _="
     on keydown[(ctrlKey or metaKey) and key == 'Enter'] from window requestSubmit() me 
@@ -34,7 +34,9 @@
                     'How many vacation days do you get in the Netherlands?',
                     'Where do I submit my resignation?',
                     'How old should my laptop be before I can get a new one?',
-                    'What is the shadow CEO program?'
+                    'What is the shadow CEO program?',
+                    'What is the name of Gitlab\'s CEO?',
+                    'What is the name of Gitlab\'s CTO?'
                     ]
                     on click
                     set #question.value to :ideas[Math.floor(Math.random() * :ideas.length)]
