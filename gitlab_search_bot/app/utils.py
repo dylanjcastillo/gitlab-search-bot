@@ -75,22 +75,24 @@ def rerank_docs(
 
 def build_prompt(query: str, references: list) -> str:
     prompt_prefix = [
-        "You're a helpful assistant, that helps users solve questions, based on the internal knowledge base.",
-        "\nYou've found the following references:",
+        "You're a helpful assistant. Given the following extracted parts of Gitlab's employees handbook, provide a detailed answer based on these references. If you don't know the answer, say you couldn't find any relevant sources."
+        "\n\n",
+        "References:",
     ]
 
     prompt_suffix = [
-        f"\n\nUser: {query}",
-        "\nAssistant:",
+        f"\n\nQuestion: {query}",
+        "\nAnswer:",
     ]
 
     curr_len = len(tokenizer.encode("".join(prompt_prefix + prompt_suffix)))
 
     prompt_references = ""
     candidate_reference = ""
-    for i, reference in enumerate(references, 1):
-        candidate_reference = f"\n\n{i}.{clean_text(reference['title'])}"
-        candidate_reference += f"\n{clean_text(reference['text'])}"
+    for i, reference in enumerate(references, start=1):
+        candidate_reference += (
+            f"\n[{i}] {clean_text(reference['title'])}: {clean_text(reference['text'])}"
+        )
 
         if curr_len + len(tokenizer.encode(candidate_reference)) > 1900:
             break
@@ -106,7 +108,7 @@ def get_response(prompt: str, cohere_client: cohere.Client):
         model="command-xlarge-nightly",
         prompt=prompt,
         max_tokens=200,
-        temperature=0.1,
+        temperature=0,
     )
     return response.generations[0].text
 

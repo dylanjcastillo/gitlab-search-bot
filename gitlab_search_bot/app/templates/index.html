@@ -20,7 +20,7 @@
     on keydown[(ctrlKey or metaKey) and key == 'Enter'] from window requestSubmit() me 
     on keydown[(ctrlKey or metaKey) and key == 'Enter'] from window set #results-list.innerHTML to ''">
             <textarea id="question" name="question" required autofocus placeholder="What would you like to know?" class="
-            border w-full mx-auto p-2.5 text-gray-900 bg-stone-50 rounded-lg border-stone-300 focus:ring-blue-500
+            border w-full mx-auto p-2.5 text-gray-900 bg-white rounded-lg border-stone-300 focus:ring-blue-500
             focus:border-blue-500"></textarea>
             <div class="mt-4 flex flex-row flex-wrap justify-center">
                 <button type="button" class="
@@ -30,13 +30,11 @@
                     text-center mr-2 mb-2 " _="
                     set :ideas to
                     [
-                    'How many vacation days are given in Germany?',
-                    'How many vacation days are given in the Netherlands?',
-                    'What should I do to resign?',
-                    'What is the product development process?',
-                    'How do I get a new laptop?',
-                    'What are the guidelines for purchasing a new laptop?',
-                    'Can I purchase a laptop that is more expensive than the standard laptop?'
+                    'How many vacation days do you get in Germany?',
+                    'How many vacation days do you get in the Netherlands?',
+                    'Where do I submit my resignation?',
+                    'How old should my laptop be before I can get a new one?',
+                    'What is the shadow CEO program?'
                     ]
                     on click
                     set #question.value to :ideas[Math.floor(Math.random() * :ideas.length)]

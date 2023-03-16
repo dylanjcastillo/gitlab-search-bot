@@ -67,6 +67,10 @@ def ask(
     for result in reranked_results:
         references[result["title"]].append(result)
 
+    references = defaultdict(
+        list, {k: v for k, v in references.items() if any([r["section"] for r in v])}
+    )
+
     return templates.TemplateResponse(
         "_response.html",
         {
